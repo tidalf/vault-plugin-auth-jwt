@@ -262,7 +262,7 @@ func (b *jwtAuthBackend) verifyOIDCToken(ctx context.Context, config *jwtConfig,
 func (b *jwtAuthBackend) createIdentity(allClaims map[string]interface{}, role *jwtRole) (*logical.Alias, []*logical.Alias, error) {
 	userClaimRaw, ok := allClaims[role.UserClaim]
 	if !ok {
-		return nil, nil, fmt.Errorf("claim %q not found in token", role.UserClaim)
+		return nil, nil, fmt.Errorf("test claim %q not found in token", role.UserClaim)
 	}
 	userName, ok := userClaimRaw.(string)
 	if !ok {
@@ -288,7 +288,7 @@ func (b *jwtAuthBackend) createIdentity(allClaims map[string]interface{}, role *
 	groupsClaimRaw := getClaim(b.Logger(), allClaims, role.GroupsClaim)
 
 	if groupsClaimRaw == nil {
-		return nil, nil, fmt.Errorf("%q claim not found in token", role.GroupsClaim)
+		return nil, nil, fmt.Errorf("test %q claim not found in token", role.GroupsClaim)
 	}
 	groups, ok := groupsClaimRaw.([]interface{})
 
